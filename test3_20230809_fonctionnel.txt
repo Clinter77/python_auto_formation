@@ -1,0 +1,395 @@
+# test3
+print("test3.py")
+"""
+   un petit fichier de tests exécutable avec l'invite de commandes (cmd)
+   avec la commande >>> py test.py
+   ou en saisissant d'abord >>> python
+   puis le code ...
+   et pour resortir des exécutions python
+   >>> exit()
+   ou faire Control Z puis Entrée
+"""
+
+# from email.policy import default
+import datetime
+import sys
+
+
+date = str(datetime.datetime.now())
+print("date :",date)
+print("Version :",sys.version)
+
+print("---------------------------------------------------------")
+
+nom = 'Dumortier'
+prenom = "Christophe"
+print(f"Bonjour {prenom} { nom }, ça va ? ", end="") # l'ajout de , end="" fera qu'il n'y aura pas de retour à la ligne entre les deux messages affichés, ils seront surla même ligne
+print(F"Bonjour {prenom} { nom }, ça va ?")
+# affiche Bonjour Christophe Dumortier, ça va ? Bonjour Christophe Dumortier, ça va ?
+
+"""
+la f string (ou F string, les deux fonctionnent avec f ou F) ne fonctionne pas dans le terminal visiblement avec commande python,
+par contre cela fonctionne avec py à la place python
+"""
+
+print(nom,prenom, ", 45 ans") 
+# affiche Dumortier Christophe , 45 ans
+
+"""
+print(nom,prenom, ", 45 ans") ou print(nom, prenom, ", 45 ans") renvoient tous les deux Dumortier Christophe , 45 ans (avec l'espace entre mon nom et mon prénom)
+l'espace entre nom et prénom n'a aucune incidence, ils seront de toute façon séparé par un espace, par contre entre les guillemets simples ou doubles, à moi d'y penser
+"""
+
+print(12 + 2 * 5) # renvoie 22, il a bien appliqué la priorité de la multiplication sur l'addition
+print(2 * 5 + 12) # renvoie 22, il a bien appliqué la priorité de la multiplication sur l'addition
+
+temps_ensoleille = True
+temps_ensoleille = False
+
+print("-------------")
+
+print(temps_ensoleille) # renvoie False
+
+print("-------------")
+
+personnages = ["Tintin", "Haddock", "Triffon Tournesol"]
+print(personnages[0]) # affichera Tintin
+print(personnages[2]) # affichera Triffon Tournesol
+print("-------------")
+langage_de_programmation = "PYTHON"
+
+print("langage_de_programmation[1]: ", langage_de_programmation[1], "!")
+# affichera langage_de_programmation[1]: Y !
+
+print("langage_de_programmation[1] : "+langage_de_programmation[1]+" !")
+# affichera langage_de_programmation[1] : Y !
+
+print("-------------")
+
+personnages.append("Hergé") # ajoute Hergé à la liste des personnages (au tableau), grâce à append()
+print(personnages) # affiche le contenu de la liste : ['Tintin', 'Haddock', 'Triffon Tournesol', 'Hergé']
+print(len(personnages)) # renvoie 4
+
+# modifier un personnage dans la liste (via l'index fourni en params) :
+# personnages[0]="TINTIN"
+# il suffit de ré-affecter une autre valeur à un indice donné
+
+personnages.remove("Triffon Tournesol") # supprime le personnage Triffon Tournesol de la liste, avec la méthode remove()
+print(personnages) # affiche ['Tintin', 'Haddock', 'Hergé']
+
+# remove()  retire uniquement la première instance du terme que vous saisissez.
+
+personnages.pop(2) # la méthode pop() supprime le contenu de la liste ayant l'index 2, donc le troisième élément
+print(personnages) # affiche ['Tintin', 'Haddock']
+
+personnages.pop() # la méthode supprimera alors le dernier élément car aucun index n'est fourni
+print(personnages) # affiche ['Tintin']
+print("longueur de la liste maintenant",len(personnages)) # affiche longueur de la liste maintenant 1
+
+personnages.append("Haddock") # ajout du personnage Haddock à la liste (au tableau)
+personnages.append("Triffon Tournesol")
+print("longueur de la liste maintenant",len(personnages)) # affiche longueur de la liste maintenant 3
+print(personnages) # affiche ['Tintin', 'Haddock', 'Triffon Tournesol']
+personnages[2]="Triffon" # pour modifier, remplacer le 2ème élémnet par Triffon au lieu de Triffon Tournesol
+print("la liste après modification :")
+print(personnages) # affiche ['Tintin', 'Haddock', 'Triffon']
+
+# méthode sort() pour trier la liste dans le sens croissant
+personnages.sort()
+print("la liste triée",personnages) # affiche la liste triée par ordre croissant alphabétique - affiche : la liste triée ['Haddock', 'Tintin', 'Triffon']
+
+# méthode reverse() pour trier la liste dans le sens décroissant
+personnages.reverse()
+print("la liste triée par ordre inversé ",personnages) # affiche la liste triée par ordre décroissant alphabétique - affiche : la liste triée par ordre inversé  ['Triffon', 'Tintin', 'Haddock']
+# avec la concaténation avec ""+ cela n'aurait pas fonctionné, et renvoyé une erreur car il n'y a pas de concaténation possible entre un String et une liste
+
+print("les tuples")
+personnages_tuples_immuables = ("Tintin", "Haddock", "Triffon Tournesol")
+print(personnages_tuples_immuables)
+# personnages_tuples_immuables[2]="Triffon" # renverra une erreur car un tuple est une liste immuable, non modifiable
+
+print("-------------")
+# équivalents à contains() et includes() : in
+# chercher la présence d'un contenu string dans la liste (dans le tableau) - avec in :
+print('Tintin' in personnages) # renvoie True, car il est bien présent dans la liste "personnages"
+print("Tintin" in personnages) # renvoie True, car il est bien présent dans la liste "personnages"
+print("Christophe" in personnages) # renvoie False, car il n'est pas présent dans la liste "personnages"
+print("-------------")
+print('Haddock' in personnages_tuples_immuables) # renvoie True, car il est bien présent dans le tuple "personnages_tuples_immuables"
+print("Christophe" in personnages_tuples_immuables) # renvoie False, car il n'est pas présent dans le tuple "personnages_tuples_immuables"
+
+print("-------------")
+print("les dictionnaires en Python")
+maVoitureActuelle = {
+   "marque": "Opel",
+   "annee": 2011,
+   "modele": "Corsa 4"
+}
+print(maVoitureActuelle) # affiche {'marque': 'Opel', 'annee': 2011, 'modele': 'Corsa 4'}
+print("sa marque : "+maVoitureActuelle['marque']) # affiche sa marque : Opel
+print("sa marque :",maVoitureActuelle['marque']) # affiche sa marque : Opel
+print("ajout de la clé 'proprietaire' et de sa valeur 'Christophe' au dictionnaires")
+maVoitureActuelle["proprietaire"]="Christophe"
+print(maVoitureActuelle) # affiche {'marque': 'Opel', 'annee': 2011, 'modele': 'Corsa 4', 'proprietaire': 'Christophe'}
+print("son propriétaire",maVoitureActuelle['proprietaire']) # affiche son propriétaire Christophe
+
+print("modifier la valeur d'une clé du dictionnaire")
+maVoitureActuelle["proprietaire"]='Christophe Dumortier'
+print("maVoitureActuelle['proprietaire'] : "+maVoitureActuelle['proprietaire']) # affiche maVoitureActuelle['proprietaire'] : Christophe Dumortier
+
+print("Supprimer une paire clé-valeur avec del, suppression de la clé annee")
+del maVoitureActuelle["annee"]
+print(maVoitureActuelle) # affiche {'marque': 'Opel', 'modele': 'Corsa 4', 'proprietaire': 'Christophe Dumortier'}
+print("Supprimer la dernière paire clé-valeur avec popitem(), qui ne prend pas d'argument")
+maVoitureActuelle.popitem() # supprime la dernière clé (et sa valeur) du dictionnaire
+print(maVoitureActuelle) # affiche {'marque': 'Opel', 'modele': 'Corsa 4'}
+
+print("ré-ajout de la clé 'proprietaire' et de sa valeur 'Christophe' au dictionnaires")
+maVoitureActuelle["proprietaire"]="Christophe"
+print(maVoitureActuelle) # affiche {'marque': 'Opel', 'modele': 'Corsa 4', 'proprietaire': 'Christophe'}
+
+print(maVoitureActuelle.keys()) # pour afficher les clés de ce dictionnaire : dict_keys(['marque', 'modele', 'proprietaire'])
+print(maVoitureActuelle.values()) # pour afficher les valeurs de ce dictionnaire : dict_values(['Opel', 'Corsa 4', 'Christophe'])
+print(maVoitureActuelle.items()) # pour afficher les paires clés-valeurs du dictionnaire : dict_items([('marque', 'Opel'), ('modele', 'Corsa 4'), ('proprietaire', 'Christophe')])
+
+print("vérification de l'existence d'une clé dans le dictionnaire demandé")
+print("vérification de l'existence de la clé 'proprietaire'")
+print("proprietaire" in maVoitureActuelle) # renvoie True, car cette clé est bel et bien présente dans le dictionnaire cité
+print("vérification de l'existence de la clé 'annee'")
+print('annee' in maVoitureActuelle) # renvoie False, car cette clé n'est pas présente
+
+print("-------------")
+
+# les Classes :
+class Livre:
+  # constructeur de la Classe, méthode __init__(self, param1, param2, ...):
+  def __init__(self, nom, auteur, nb_pages):
+    self.nom = nom
+    self.auteur = auteur
+    self.nb_pages = nb_pages
+
+# instanciation d'un nouveau livre
+nouveau_livre = Livre("Les meilleures pratiques en matière de programmation","Christophe Ferdinand", 500)
+
+print('nouveau livre créé')
+print("son nom :",nouveau_livre.nom,", son auteur",nouveau_livre.auteur, ", son nombre de pages",nouveau_livre.nb_pages)
+
+print("modification de l'un de ses attributs")
+nouveau_livre.nom="La programmation de A à Z"
+print("son nom après modification :",nouveau_livre.nom)
+
+# en sortie :
+"""
+nouveau livre créé
+son nom : Les meilleures pratiques en matière de programmation , son auteur Christophe Ferdinand , son nombre de pages 500
+modification de l'un de ses attributs
+son nom après modification : La programmation de A à Z
+"""
+
+print("-------------")
+print("09 août 2023")
+
+# utilisation de liste, de boucles (de loop) for in (for element_of_liste in liste:), for in range with index (for i in range(len(ma_liste)):), et de boucle while (while i < len(liste):) 
+
+liste_mes_amis_Afpa = ["Cédric", "Eric", "Jean-Seb", "Seb"]
+print("liste_mes_amis_Afpa :",liste_mes_amis_Afpa) # en sortie : liste_mes_amis_Afpa : ['Cédric', 'Eric', 'Jean-Seb', 'Seb']
+print("celui qui se trouve à l'indice 0 - liste_mes_amis_Afpa[0] :", liste_mes_amis_Afpa[0]) # en sortie : celui qui se trouve à l'indice 0 - liste_mes_amis_Afpa[0] : Cédric
+ami_cedric = liste_mes_amis_Afpa[0]
+for caractere in ami_cedric:
+  print(caractere)
+# print("\n") # permet d'aller à la ligne aussi - rajoute une entrée
+# en sortie :
+"""
+C
+é
+d
+r
+i
+c
+
+"""
+i=0
+print("longueur, len(ami_cedric) :",len(ami_cedric))
+while i < len(ami_cedric):
+  print("i",i,ami_cedric[i])
+  i+=1
+
+i=0
+print('*******')
+# en sortie :
+"""
+i 0 C
+i 1 é
+i 2 d
+i 3 r
+i 4 i
+i 5 c
+""" 
+for i in range(len(ami_cedric)):
+  print("i",i,ami_cedric[i])
+# en sortie :
+"""
+i 0 C
+i 1 é
+i 2 d
+i 3 r
+i 4 i
+i 5 c
+"""
+print('*******')
+
+for ami in liste_mes_amis_Afpa:
+  print("ami",ami)
+print("nb amis",len(liste_mes_amis_Afpa))
+print('*******')
+# en sortie :
+"""
+ami Cédric
+ami Eric
+ami Jean-Seb
+ami Seb
+nb amis 4
+""" 
+
+# print("liste_mes_amis_Afpa : "+liste_mes_amis_Afpa) lève une Exception
+"""
+TypeError: can only concatenate str (not "list") to str
+"""
+
+temps_ensoleille = True
+print("temps_ensoleille = True - type(temps_ensoleille)",type(temps_ensoleille),"et sa valeur",temps_ensoleille)
+# renvoie : temps_ensoleille = True - type(temps_ensoleille) <class 'bool'> et sa valeur True
+
+variable = 123
+print("variable = 123 - type(variable)",type(variable),"et sa valeur",variable)
+# renvoie : variable = 123 - type(variable) <class 'int'> et sa valeur 123
+
+variable = str(variable)
+print("variable = str(variable) - type(variable)",type(variable),"et sa valeur",variable)
+# renvoie : variable = str(variable) - type(variable) <class 'str'> et sa valeur 123
+
+variable = 123.45
+print("variable = 123.45 - type(variable)",type(variable),"et sa valeur",variable)
+# renvoie : variable = 123.45 - type(variable) <class 'float'> et sa valeur 123.45
+
+variable=int(variable)
+print("variable=int(variable) - type(variable)",type(variable),"et sa valeur",variable)
+# renvoie : variable=int(variable) - type(variable) <class 'int'> et sa valeur 123
+# (il a bien récupéré la partie entière de la variable
+
+"""
+exemples possibles de cast :
+int(variable)
+float(variable)
+str(variable) -> Cast en string
+"""
+
+
+
+# les conditions (bloc if/else, if/elif/else, et équivalent switch cases (match cases) :
+
+if type(variable)==int:
+  print("variable est en Integer")
+else :
+  print("variable est d'un autre type qu'Integer") 
+# en sortie : variable est en Integer
+
+variable = float(variable)
+
+if type(variable)==int :
+  print("variable est en Integer",'et sa valeur est de',variable)
+elif type(variable)==float:
+  print("variable est en Float",'et sa valeur est de',variable)
+else :
+  print("variable n'est ni de type Integer ni de type float") 
+# en sortie : variable est en Float et sa valeur est de 123.0
+
+print("-------------")
+
+variable += 0.123456789
+print('après avoir lui avoir ajouté quelques chiffres après la virgule - variable += 0.123456789')
+if type(variable)==int :
+  print("variable est en Integer",'et sa valeur est de',variable)
+elif type(variable)==float:
+  print("variable est en Float",'et sa valeur est de',variable)
+else :
+  print("variable n'est ni de type Integer ni de type float") 
+# en sortie : variable est en Float et sa valeur est de 123.123456789
+
+print("en type Float") if type(variable)==float else print('autre type que Float')
+# en sortie : en type Float
+
+print("-------------")
+
+variable-=0.000006789
+print('après avoir lui avoir enlevé quelques chiffres après la virgule - variable-=0.000006789')
+print("type(variable)",type(variable),"et sa valeur",variable)
+# en sortie : type(variable) <class 'float'> et sa valeur 123.12345
+
+print("-------------")
+
+a = 33
+b = 200
+if b > a:
+  pass
+# having an empty if statement like this, would raise an error without the pass statement
+
+print("-------------")
+
+print("Switch case statement equivalent - match case - tous les cas fontionnent, y compris le default case _")
+
+jour="lundi"
+result=""
+
+def check_day_of_week(jour):
+  print("jour",jour)
+  match jour:
+    case 'lundi':
+      print('cas lundi')
+      result="Le Lundi au Soleil"
+      return result
+    case 'mardi':
+      print('cas mardi')
+      result="Moordi gras"
+      return result
+    case 'mercredi':
+      print('cas mercredi')
+      result="Mer creux dit"
+      return result
+    case 'jeudi':
+      print('cas jeudi')
+      result="Je dis Jeudi"
+      return result
+    case 'vendredi':
+      print('cas vendredi')
+      result="Vendredi tout est permis, y compris les blagues"
+      return result
+    case 'samedi':
+      print('cas samedi')
+      result="ça me dit ..."
+      return result
+    case 'dimanche':
+      print('cas dimanche')
+      result="Retroussons-nous les manches !"
+      return result
+    case _:
+      print('cas inconnu')
+      result="jour inconnu au bataillon"
+      return result
+
+result = check_day_of_week(jour) # si je n'avais pas placé le résultat de l'appel de la méthode check_day_of_week() dans result ainsi, result serais vide à l'affichage après
+print("result :",result) # affichera : result : Le Lundi au Soleil
+print("result :\t",result) # affichera : result :         Le Lundi au Soleil (la tabulation a été ajoutée grâce au \t)
+
+print("result :\n",result)
+"""
+affichera :
+result :
+ Le Lundi au Soleil
+"""
+
+    
+
+    
+
+
