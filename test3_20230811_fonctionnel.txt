@@ -621,3 +621,54 @@ print("tableau_liste_uniques_elements_sorted après utilisation de set() : ",tab
 # en sortie : tableau_liste_uniques_elements_sorted après utilisation de set() :  ['Chats', 'Dauphins', 'Hiboux', 'Jaguars', 'Oiseaux', 'Ours', 'Tigres']
 
 print("longueur du tableau_liste après utilisation du Set() ",len(tableau_liste_uniques_elements_sorted)) # en sortie : 7
+
+
+# ******************************************************
+
+# inversion de caractères sur une chaîne, et aussi retrait des espaces blanc pour la nouvelle chaîne inversée - fonctionnel
+string_to_test = "Coucou"
+
+# fonctionnels
+print("string_to_test :",string_to_test)
+print("string_to_test.upper() :",string_to_test.upper())
+print("string_to_test.lower() :",string_to_test.lower())
+
+# sans global, j'obtiendrai l'erreur : UnboundLocalError: local variable 'string_reversed' referenced before assignment
+# string_reversed ça ne fonctionne pas non plus y compris avec le mot clé global
+
+
+string_reversed = ""
+
+def function_to_reverse_string(string_to_reverse):
+  # print("string_to_reverse in my_function",string_to_reverse,"et sa longueur ",len(string_to_reverse))) fonctionnel
+  # sans global, j'obtiendrai l'erreur : UnboundLocalError: local variable 'string_reversed' referenced before assignment
+  # soit je procède ainsi avec global devant ma variable utilisé dans ce contexte (car elle a été déclarée avant ma fonction), soit je la déclare directement dans la fonction sans global, alors dans tel cas il ne faut pas la déclarer avant la fonction
+  global string_reversed
+  for character in string_to_reverse:
+    # print(character,end="") # fonctionnel
+    # string_reversed = character + string_reversed # fonctionnel
+    if (character != " "): string_reversed = character + string_reversed # fonctionnel aussi, pour échapper les espaces
+  print()
+  return string_reversed
+
+string_reversed = function_to_reverse_string("Voici une chaîne au hasard")
+# pour corriger l'erreur levée par l'interpréteur de Python, j'ai assigné le rétour de la fonction dans ma variable
+
+print("string_reversed avant utilisation de la méthode split() :",string_reversed)
+
+# The \s character matches Unicode whitespace characters like [ \t\n\r\f\v]
+
+print("string_reversed avant utilisation de la méthode split() :",string_reversed)
+
+a = """Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua."""
+print(a)
+"""
+en sortie :
+Lorem ipsum dolor sit amet,
+consectetur adipiscing elit,
+sed do eiusmod tempor incididunt
+ut labore et dolore magna aliqua.
+"""
