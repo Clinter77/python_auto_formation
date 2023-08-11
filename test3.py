@@ -672,3 +672,216 @@ consectetur adipiscing elit,
 sed do eiusmod tempor incididunt
 ut labore et dolore magna aliqua.
 """
+
+print()
+
+#---------------------------------------- fonctionnels aussi ---------------------------------------- 
+
+# avant la version 3.10 de Python, il n'y avait pas de match case possible, donc if / elif / else
+# la fonction rate_note() avec if / elif / else
+def rate_note(n):
+  retour=""
+  if n>=0 and n <10:
+    retour = "c'est une mauvaise note"
+  elif n==10:
+    retour="c'est juste la moyenne, bof !"
+  elif n>10 and n<20:
+    retour='bon travail, persistez, et ça le fera :)'
+  elif n == 20:
+    retour="c'est excellent ! continuez-ainsi !"
+  else:
+    retour="c'est quoi cette note, je ne comprends pas :("
+  return retour
+
+note_test=20
+
+retour=rate_note(note_test)
+print(F"avec une note de {note_test}, voici ce que j'en dit : {retour}")
+"""
+en sortie :
+  avec en entrée -5 : avec une note de -5, voici ce que j'en dit : c'est quoi cette note, je ne comprends pas :(
+  avec en entrée 0 : avec une note de 0, voici ce que j'en dit : c'est une mauvaise note
+  avec en entrée 5 : avec une note de 5, voici ce que j'en dit : c'est une mauvaise note
+  avec en entrée 9 : avec une note de 9, voici ce que j'en dit : c'est une mauvaise note
+  avec en entrée 10 : avec une note de 10, voici ce que j'en dit : c'est juste la moyenne, bof !
+  avec en entrée 11 : avec une note de 11, voici ce que j'en dit : bon travail, persistez, et ça le fera :)
+  avec en entrée 15 : avec une note de 15, voici ce que j'en dit : bon travail, persistez, et ça le fera :)
+  avec en entrée 19 : avec une note de 19, voici ce que j'en dit : bon travail, persistez, et ça le fera :)
+  avec en entrée 20 : avec une note de 20, voici ce que j'en dit : c'est excellent ! continuez-ainsi !
+  avec en entrée 21 : avec une note de 21, voici ce que j'en dit : c'est quoi cette note, je ne comprends pas :(   
+"""
+
+print()
+
+# depuis la version 3.10 de Python, match case possible
+# la fonction rate_note_1() avec match case possible
+def rate_note_1(note):
+  retour=""
+  match note:
+    case 0,1,2,3,4,5,6,7,8,9 :
+      retour = "c'est une mauvaise note"
+    case 10:
+      retour="c'est juste la moyenne, bof !"
+    case 11, 12, 13, 14, 15, 16, 17, 18, 19:
+      retour='bon travail, persistez, et ça le fera :)'
+    case 20:
+      retour="c'est excellent ! continuez-ainsi !"
+    case _:
+      retour="c'est quoi cette note, je ne comprends pas :("
+  return retour
+
+result=rate_note_1(note_test)
+print(F"avec une note de {note_test}, voici ma réponse : {retour}")
+
+#---------------------------------------------------------------------------------------------------- 
+
+# calculatrice fonctionnelle
+print()
+def make_calcul(nb1,nb2,op):
+  result=""
+  if type(nb1)==int and type(nb2)==int:
+    if op=="+" or op=="-" or op=="*" or op=="/":
+      match op:
+        case "+":
+          result=nb1+nb2
+        case "-":
+          result=nb1-nb2
+        case "/":
+          if(nb2>0):
+            result=nb1/nb2
+          else:
+            result="on ne peut pas diviser par 0 - opération impossible"
+        case "*":
+          result=nb1*nb2
+        case _:
+          result="je ne peux pas effectuer le calcul demandé !"
+    else:
+      result="je ne peux pas effectuer le calcul demandé !"
+  else:
+    result="je ne peux pas effectuer le calcul demandé !"
+  return result
+
+nb1=9
+nb2=5
+operator = "*"
+retour_calcul = make_calcul(nb1,nb2,operator)
+print(f"voici le résultat {nb1} {operator} {nb2} = {retour_calcul}")
+print()
+#----------------------------------------------------------------------------------------------------
+
+# utilisation de la boucle while() - while loop - fonctionnelle
+
+value_max = 7
+current_value=1
+while current_value<=7:
+  print(f"la valeur de la current_value est de {current_value}")
+  current_value += 1
+print("la boucle while a pris fin")
+
+"""
+en sortie :
+la valeur de la current_value est de 0
+la valeur de la current_value est de 1
+la valeur de la current_value est de 2
+la valeur de la current_value est de 3
+la valeur de la current_value est de 4
+la valeur de la current_value est de 5
+la valeur de la current_value est de 6
+la valeur de la current_value est de 7
+la boucle while a pris fin
+"""
+print()
+
+# utilisation de break pour interrompre la suite d'exécution de la boucle avant ce qui était prévu - fonctionnel
+for i in range(7):
+  if(i==5):
+    break
+  print("i ",i)
+
+"""
+en sortie :
+i  0
+i  1
+i  2
+i  3
+i  4
+"""
+
+# utilisation de continue pour poursuivre la suite d'exécution de la boucle sans exécuter le cas où l'instruction continue a été fourni - fonctionnel
+print()
+# range(1,7) - la boucle s'effectuera en commençant par 1 et en allant jusqu'à 6 (car 1 est inclus, et 7 est exclu)- lorsque i vaudra 5 la valeur de i ne sera pas affiché, on poursuit directement sur l'itération suivante de la boucle
+for i in range(1,7):
+  if(i==5):
+    continue
+  print("i ",i)
+
+"""
+en sortie :
+i  1
+i  2
+i  3
+i  4
+i  6
+"""
+
+# autres fonctions fonctionnelles (sans paramètres, avec paramètre, puis avec paramètre et retour lorsque le prénom Christophe est envoyé à la fonction)
+"""
+Est-ce qu’une fonction peut renvoyer plusieurs valeurs simultanément ?
+Il est possible de retourner plusieurs valeurs en les séparant par des virgules dans l'instruction de retour de la fonction.
+Les valeurs retournées seront automatiquement regroupées dans un tuple.Quand utiliser les fonctions
+"""
+
+print()
+
+def affiche_bonjour():
+  print("Bonjour")
+
+affiche_bonjour()
+
+def affiche_bonjour_avec_prenom(prenom):
+  print(f"Bonjour {prenom}")
+
+affiche_bonjour_avec_prenom("Christophe")
+
+def affiche_bonjour_avec_prenom_et_retour(prenom):
+  retour=""
+  if prenom=="Christophe":
+    retour="Salut, mon ami :)"
+  else:
+    retour=""
+  return print("Bonjour",prenom,retour) # presque optionnel en fait, si on commente cette ligne avec le return cela fonctionnera aussi
+
+affiche_bonjour_avec_prenom_et_retour("Christophe")
+
+print()
+
+# tout ce qui suit est fonctionnel aussi
+
+def calcul_salaire_horaire(salaire_mensuel, nb_heures_travaillees_par_semaine):
+  salaire_horaire=0
+  if (salaire_mensuel and nb_heures_travaillees_par_semaine):
+    salaire_horaire = salaire_mensuel * 12 / 52 / nb_heures_travaillees_par_semaine
+  else: print("Erreur, je ne peux effectuer ce calcul")
+  return salaire_horaire
+
+print(calcul_salaire_horaire(26933/12,35)) # 26933 / 12 = 2244.42
+
+"""
+print(calcul_salaire_horaire(2244,35))
+en sortie :
+  avec en entrée 2244,35 (2244 le salaire mensuel et 35 le nb d'heures hebdromadaire) : 14.795604395604395
+print(calcul_salaire_horaire(21000/12,35)) # 21000 / 12 = 1750
+  avec en entrée 21000/12,35 (21000/12=1750 le salaire mensuel et 35 le nb d'heures hebdromadaire) : 11.538461538461538
+"""
+def calcul_salaire_horaire_arrondi(salaire_mensuel, nb_heures_travaillees_par_semaine):
+  salaire_horaire=0
+  if (salaire_mensuel and nb_heures_travaillees_par_semaine):
+    salaire_horaire = round(salaire_mensuel * 12 / 52 / nb_heures_travaillees_par_semaine, 2) # utilisation de round(nb,2) pour un arrondi à deux décimales
+  else: print("Erreur, je ne peux effectuer ce calcul")
+  return salaire_horaire
+
+print(calcul_salaire_horaire_arrondi(21000/12,35)) # 21000 / 12 = 1750 en sortie : salaire horaire arrondi à 11.54
+print(calcul_salaire_horaire_arrondi(2244,35)) # en sortie : salaire horaire arrondi à 14.8
+print()
+
+
