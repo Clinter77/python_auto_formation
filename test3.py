@@ -839,6 +839,7 @@ def affiche_bonjour():
 affiche_bonjour()
 
 def affiche_bonjour_avec_prenom(prenom):
+  '''méthode pour retourner le message Bonjour suivi du prénom passé en paramètre'''
   print(f"Bonjour {prenom}")
 
 affiche_bonjour_avec_prenom("Christophe")
@@ -857,22 +858,54 @@ print()
 
 # tout ce qui suit est fonctionnel aussi
 
+# utilisation de documentation docstring
+"""
+Les docstrings sont des chaînes de documentation qui sont utilisées pour documenter les fonctions, les modules, les classes et les méthodes dans le code.
+Elles sont généralement placées directement après la déclaration de la fonction, de la classe, du module ou de la méthode, entre des guillemets triples.
+Pour faire s'afficher la dostring concernant la fonction, il suffit de faire dans ce cas ici : help(calcul_salaire_horaire) avec l'interpréteur de Python
+"""
+
 def calcul_salaire_horaire(salaire_mensuel, nb_heures_travaillees_par_semaine):
+  """
+  Cette fonction calcule le taux horaire en se basant sur les deux paramètres qui lui sont fournis, et retourne le résultat.
+
+  Parameters:
+  salaire_mensuel (int ou float): le premier paramètre
+  nb_heures_travaillees_par_semaine (int ou float): le deuxième paramètre
+
+  Returns:
+  int ou float: le salaire horaire
+  """
   salaire_horaire=0
-  if (salaire_mensuel and nb_heures_travaillees_par_semaine):
-    salaire_horaire = salaire_mensuel * 12 / 52 / nb_heures_travaillees_par_semaine
-  else: print("Erreur, je ne peux effectuer ce calcul")
-  return salaire_horaire
+  try:
+    if ( ((type(salaire_mensuel)==int or type(salaire_mensuel)==float)) and ((type(nb_heures_travaillees_par_semaine)==int or type(nb_heures_travaillees_par_semaine)==float)) and (salaire_mensuel>0) and (nb_heures_travaillees_par_semaine>0) ):
+      salaire_horaire = salaire_mensuel * 12 / 52 / nb_heures_travaillees_par_semaine
+    else: print("Erreur, je ne peux effectuer ce calcul")
+    # break lorsque la fonction n'a pas de valeur à retourner via un return
+    return salaire_horaire
+  except (RuntimeError, TypeError, NameError, ZeroDivisionError):
+    # pass - si je ne souhaite pas afficher de message en particulier
+    print("Au moins l'un des deux n'est pas un nombre !")
 
 print(calcul_salaire_horaire(26933/12,35)) # 26933 / 12 = 2244.42
+print()
 
-"""
+
+salaire_mensuel_test=21000/12
+nb_heures_semaine_test=0
+if (salaire_mensuel_test>0 and nb_heures_semaine_test>0): print("line887",calcul_salaire_horaire(21000/12,0))
+# en sortie : 
+# Au moins l'un des deux n'est pas un nombre !
+# line887 None
+
+print()
+'''
 print(calcul_salaire_horaire(2244,35))
 en sortie :
   avec en entrée 2244,35 (2244 le salaire mensuel et 35 le nb d'heures hebdromadaire) : 14.795604395604395
 print(calcul_salaire_horaire(21000/12,35)) # 21000 / 12 = 1750
   avec en entrée 21000/12,35 (21000/12=1750 le salaire mensuel et 35 le nb d'heures hebdromadaire) : 11.538461538461538
-"""
+'''
 def calcul_salaire_horaire_arrondi(salaire_mensuel, nb_heures_travaillees_par_semaine):
   salaire_horaire=0
   if (salaire_mensuel and nb_heures_travaillees_par_semaine):
@@ -883,5 +916,24 @@ def calcul_salaire_horaire_arrondi(salaire_mensuel, nb_heures_travaillees_par_se
 print(calcul_salaire_horaire_arrondi(21000/12,35)) # 21000 / 12 = 1750 en sortie : salaire horaire arrondi à 11.54
 print(calcul_salaire_horaire_arrondi(2244,35)) # en sortie : salaire horaire arrondi à 14.8
 print()
+
+print(affiche_bonjour_avec_prenom.__doc__) # pour voir s'afficher la docstring sur cette méthode (équivalent à JavaDoc mais pour Python)
+# affiche : méthode pour retourner le message Bonjour suivi du prénom passé en paramètre
+
+print(calcul_salaire_horaire.__doc__)
+
+print()
+
+# fonctionnel - source : https://docs.python.org/fr/3/tutorial/errors.html
+"""
+while True:
+  try:
+    x = int(input("Veuillez entrer un nombre s'il vous plaît : "))
+    break
+  except ValueError:
+    print("Ce n'est pas un nombre valide")
+"""
+
+
 
 
