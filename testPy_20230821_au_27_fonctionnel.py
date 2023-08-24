@@ -132,3 +132,39 @@ divideAndShowResult(257,3)
         la division a bien eu lieu sans souci
         la fin du programme
 """
+   
+print("\n**********************\n")
+
+# analyser les mots d'un commentaire en échappant de celui-ci les mots considérés comme 'interdits', compris dans une liste, en les remplaçant par des ?
+def analyse_and_escape_forbidden_comments(current_comment):
+    list_of_forbidden_words_M = ["ANALPHABETE","BETE","DERISOIRE","ENERVANT","STUPIDE"]
+    list_of_forbidden_words_m = ["analphabète","bête","dérisoire","énervant","stupide"]
+    comment0_words = current_comment.split()
+    comment0_after = ""
+
+    for word in comment0_words:
+        #print(word)
+        if ((word.upper() in list_of_forbidden_words_M) or (word.lower() in list_of_forbidden_words_m)):
+            comment0_after += "? "
+        else:
+            comment0_after += word+" "
+    print("comment0_after:",comment0_after)
+
+# calls of this function 
+     
+comment0 = "Cette stupide décision a radicalement changé les choses"
+comment1 = "Ce travail lui a beaucoup apporté"
+comment2 = "Cet apport est plutôt Dérisoire"
+comment3 = "Cet apport est plutôt DERISOIRE"
+
+analyse_and_escape_forbidden_comments(comment0)
+# en sortie : comment0_after: Cette ? décision a radicalement changé les choses
+
+analyse_and_escape_forbidden_comments(comment1)
+# en sortie : comment0_after: Ce travail lui a beaucoup apporté
+
+analyse_and_escape_forbidden_comments(comment2)
+# en sortie : Cet apport est plutôt ?
+
+analyse_and_escape_forbidden_comments(comment3)
+# en sortie : Cet apport est plutôt ?
