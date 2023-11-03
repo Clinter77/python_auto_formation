@@ -17,6 +17,8 @@ print(f"Bonjour {prenom} { nom }, ça va ?")
 print(F"Bonjour {prenom} { nom }, ça va ?")
 # affiche Bonjour Christophe Dumortier, ça va ?
 
+print(f"test d'analyse avec Sonar Cloud")
+
 """
 la f string (ou F string, les deux fonctionnent avec f ou F) ne fonctionne pas dans le terminal visiblement avec commande python,
 par contre cela fonctionne avec py à la place python
